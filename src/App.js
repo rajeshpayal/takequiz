@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import DisplayQuestion from "./components/DisplayQuestion";
 const dummy_questions = [
@@ -58,7 +58,23 @@ const dummy_questions = [
 function App() {
   const [selectQuiz, setSelectedQuiz] = useState(0);
   const [takeQuiz, setTakeQuiz] = useState(false);
-  const windowSize = useRef([window.innerWidth, window.innerHeight]);
+
+  const [windowSize, setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   const takeQuizHandler = () => {
     if (
@@ -74,7 +90,7 @@ function App() {
   return (
     <div
       className="body"
-      style={{ height: windowSize.current[1], width: windowSize.current[0] }}
+      style={{ height: windowSize[1], width: windowSize[0] }}
     >
       <div className="nine">
         <h1>
