@@ -9,6 +9,7 @@ const DisplayQuestion = ({ questions, title }) => {
   const [score, setScore] = useState(0);
   const [crtquestion, setCrtQuestion] = useState(0);
   const [time, setTime] = useState(60);
+  const [active, setActive] = useState("");
 
   const optionClicked = (isCorrect) => {
     if (isCorrect) {
@@ -39,12 +40,24 @@ const DisplayQuestion = ({ questions, title }) => {
 
   const doubleDigit = time >= 10 ? time : `0${time}`;
 
+  const restartQuiz = () => {
+    setScore(0);
+    setCurrentQuestion(0);
+    setShowResults(false);
+    setTime(60);
+  };
+
   return (
     <div className="App">
       {!showResults && <h2>Time: {doubleDigit}sec</h2>}
 
       {showResults && (
-        <Result questions={questions} score={score} crtquestion={crtquestion} />
+        <Result
+          questions={questions}
+          score={score}
+          crtquestion={crtquestion}
+          restartQuiz={restartQuiz}
+        />
       )}
       {!showResults && (
         <div className="question-card">
@@ -53,11 +66,14 @@ const DisplayQuestion = ({ questions, title }) => {
           </h2>
           <h3 className="question-text">{questions[currentQuestion].text}</h3>
           <ol>
-            {questions[currentQuestion].options.map((option) => {
+            {questions[currentQuestion].options.map((option, idx) => {
               return (
                 <li
-                  key={option.id}
-                  onClick={() => optionClicked(option.isCorrect)}
+                  key={idx}
+                  onClick={(e) => {
+                    setActive(!active);
+                    optionClicked(option.isCorrect);
+                  }}
                 >
                   {option.text}
                 </li>

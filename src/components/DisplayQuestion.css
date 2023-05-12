@@ -64,6 +64,6 @@ button {
   border-radius: 24px;
 }
 
-.answer:hover {
+.answer {
   background-color: green;
 }

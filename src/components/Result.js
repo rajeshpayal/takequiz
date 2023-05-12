@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./DisplayQuestion.css";
-const Result = ({ questions, score, crtquestion }) => {
+const Result = ({ questions, score, crtquestion, restartQuiz }) => {
   return (
     <>
       <div className="final-results">
@@ -12,7 +12,9 @@ const Result = ({ questions, score, crtquestion }) => {
         <h3>No. of Question Correct : {crtquestion}</h3>
         <h3>No. of Question Wrong : {questions.length - crtquestion}</h3>
         <h3>Total Questions : {questions.length}</h3>
-        {/* <button onClick={restartGame}>Take Another Quiz</button> */}
+        {(score / questions.length) * 100 <= 60 && (
+          <button onClick={restartQuiz}>Retry</button>
+        )}
       </div>
     </>
   );
