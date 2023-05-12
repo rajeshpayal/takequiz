@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./DisplayQuestion.css";
+import "./Result.css";
 const Result = ({ questions, score, crtquestion, restartQuiz, time }) => {
   return (
     <>

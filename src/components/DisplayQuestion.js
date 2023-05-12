@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./DisplayQuestion.css";
 import Result from "./Result";
 
-const DisplayQuestion = ({ questions, title }) => {
+const DisplayQuestion = ({ questions }) => {
   const [showResults, setShowResults] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -20,7 +20,6 @@ const DisplayQuestion = ({ questions, title }) => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowResults(true);
-    //   setTime(60);
     }
   };
 

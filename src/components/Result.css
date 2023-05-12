@@ -1,0 +1,12 @@
+.final-results {
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  margin-top: 64px;
+  background: linear-gradient(90deg, #fc466b 0%, #3f5efb 100%);
+  padding: 16px;
+  border-radius: 16px;
+  color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}

@@ -124,10 +124,7 @@ function App() {
       )}
 
       {takeQuiz && (
-        <DisplayQuestion
-          questions={dummy_questions[selectQuiz].questions}
-          title={dummy_questions[selectQuiz].topic}
-        />
+        <DisplayQuestion questions={dummy_questions[selectQuiz].questions} />
       )}
     </div>
   );
