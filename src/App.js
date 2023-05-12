@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-
 import "./App.css";
 import DisplayQuestion from "./components/DisplayQuestion";
 const dummy_questions = [

@@ -62,7 +62,7 @@ const DisplayQuestion = ({ questions }) => {
         />
       )}
       {!showResults && (
-        <div className="question-card">
+        <div className="question">
           <h2>
             Q: {currentQuestion + 1} / {questions.length}
           </h2>
