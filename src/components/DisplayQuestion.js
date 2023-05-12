@@ -9,7 +9,6 @@ const DisplayQuestion = ({ questions, title }) => {
   const [score, setScore] = useState(0);
   const [crtquestion, setCrtQuestion] = useState(0);
   const [time, setTime] = useState(60);
-  const [active, setActive] = useState("");
 
   const optionClicked = (isCorrect) => {
     if (isCorrect) {
@@ -21,6 +20,7 @@ const DisplayQuestion = ({ questions, title }) => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowResults(true);
+    //   setTime(60);
     }
   };
 
@@ -33,6 +33,9 @@ const DisplayQuestion = ({ questions, title }) => {
       clearTimeout(timeOutId);
       setShowResults(true);
     }
+    if (showResults) {
+      clearTimeout(timeOutId);
+    }
     return () => {
       clearTimeout(timeOutId);
     };
@@ -44,7 +47,6 @@ const DisplayQuestion = ({ questions, title }) => {
     setScore(0);
     setCurrentQuestion(0);
     setShowResults(false);
-    setTime(60);
   };
 
   return (
@@ -57,6 +59,7 @@ const DisplayQuestion = ({ questions, title }) => {
           score={score}
           crtquestion={crtquestion}
           restartQuiz={restartQuiz}
+          time={time}
         />
       )}
       {!showResults && (
@@ -68,13 +71,7 @@ const DisplayQuestion = ({ questions, title }) => {
           <ol>
             {questions[currentQuestion].options.map((option, idx) => {
               return (
-                <li
-                  key={idx}
-                  onClick={(e) => {
-                    setActive(!active);
-                    optionClicked(option.isCorrect);
-                  }}
-                >
+                <li key={idx} onClick={(e) => optionClicked(option.isCorrect)}>
                   {option.text}
                 </li>
               );
