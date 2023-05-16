@@ -116,6 +116,16 @@ function App() {
               button at the bottom of the results page. You can try the quiz as
               many times as you like.
             </li>
+            <li
+              style={{
+                color: "red",
+                fontWeight: "bold",
+                fontSize: "20px",
+                backgroundColor: "#fff",
+              }}
+            >
+              If you get less than or equal to 60% you can retry the quiz
+            </li>
           </ol>
         </div>
       )}
