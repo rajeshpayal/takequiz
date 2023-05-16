@@ -46,6 +46,8 @@ const DisplayQuestion = ({ questions }) => {
     setScore(0);
     setCurrentQuestion(0);
     setShowResults(false);
+    setTime(60);
+    setCrtQuestion(0);
   };
 
   return (
