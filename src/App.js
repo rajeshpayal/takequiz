@@ -77,11 +77,7 @@ function App() {
   }, []);
 
   const takeQuizHandler = () => {
-    if (
-      window.confirm(
-        "Are you sure you want to take the quiz , remember once you have taken the quiz you can quit"
-      )
-    ) {
+    if (window.confirm("Are you sure?")) {
       setTakeQuiz(!takeQuiz);
     } else {
       return;
